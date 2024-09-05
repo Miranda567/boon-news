@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website - Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px;
+        }
+        .article {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .article h1 {
+            margin-top: 0;
+        }
+        .article p {
+            color: #666;
+        }
+        .article .meta {
+            color: #999;
+            font-size: 0.9em;
+        }
+.article a {
+            color: #333;
+            text-decoration: none;
+        }
+        .article a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>News Website</h1>
+    </div>
+    <div class="container">
+        <div class="article" id="article">
+            <!-- Article content will be injected here by JavaScript -->
+        </div>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script>
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVvPjdsj84mWqaG4-7SyjbljCnslZ1SM",
+  authDomain: "hendaa-1.firebaseapp.com",
+  databaseURL: "https://hendaa-1-default-rtdb.firebaseio.com",
+  projectId: "hendaa-1",
+  storageBucket: "hendaa-1.appspot.com",
+  messagingSenderId: "831134776479",
+  appId: "1:831134776479:web:56cd7098fc69cd70a376aa"
+};
+        firebase.initializeApp(firebaseConfig);
+
+        // Fetch article details from Firestore
+        const db = firebase.firestore();
+        const articleId = new URLSearchParams(window.location.search).get('id');
+        const articleContainer = document.getElementById('article');
+
+        db.collection("articles").doc(articleId).get().then((doc) => {
+            if (doc.exists) {
+                const article = doc.data();
+                const formattedDate = new Date(article.timestamp.seconds * 1000).toLocaleDateString();
+                const tags = article.tags.join(', ');
+
+                let imagesHTML = '';
+                if (article.imageUrls && article.imageUrls.length > 0) {
+                    article.imageUrls.forEach(url => {
+                        imagesHTML += `<img src="${url}" alt="Article Image">`;
+                    });
+                }
+
+                articleContainer.innerHTML = `
+                    ${imagesHTML}
+                                                        <img src="${article.imageUrl}" alt="${article.title}">
+                    <h1>${article.title}</h1>
+                    <p class="meta">By ${article.author} | ${formattedDate} | Category: ${article.category}</p>
+                    <p>${article.content}</p>
+                    ${article.link ? `<p><a href="${article.link}" target="_blank">Read more</a></p>` : ''}
+                    <p class="meta">Tags: ${tags}</p>
+                `;
+            } else {
+                articleContainer.innerHTML = "<p>Article not found.</p>";
+            }
+        }).catch((error) => {
+            console.error("Error fetching article:", error);
+            articleContainer.innerHTML = "<p>Failed to load article details.</p>";
+        });
+    </script>
+</body>
+</html>

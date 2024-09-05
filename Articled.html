@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website - Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        .header .logo:hover {
+            text-decoration: underline;
+        }
+        .header .actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header .watch-movie-button {
+            padding: 5px 10px;
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .header .watch-movie-button:hover {
+            background-color: #CC0000;
+        }
+        .header .toggle-menu {
+            font-size: 24px;
+            cursor: pointer;
+        }
+         .navbar {
+            display: none;
+            flex-direction: column;
+            background-color: #F4F4F4;
+            padding: 10px 20px;
+            
+        }
+        .navbar a {
+            color: #111;
+            
+            padding: 10px 0;
+            text-decoration: none;
+            font-size: 18px;
+          
+        }
+        .navbar icon {
+          color: #111;
+        }
+        .navbar a:hover {
+            background-color: #111;
+            color: #fff;
+        }
+
+            .navbar a {
+                padding: 10px 20px;
+            }
+        }
+        .container {
+            margin: 20px;
+        }
+        .article {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .article h1 {
+            margin-top: 0;
+        }
+        .article p {
+            color: #666;
+        }
+        .article .meta {
+            color: #999;
+            font-size: 0.9em;
+        }
+        .article a {
+            color: #333;
+            text-decoration: none;
+        }
+        .article a:hover {
+            text-decoration: underline;
+        }
+        .share-buttons {
+            margin-top: 20px;
+        }
+        .share-buttons button, .share-buttons a {
+            padding: 10px 15px;
+            margin-right: 5px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .share-buttons button:hover, .share-buttons a:hover {
+            background-color: #555;
+        }
+                .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+                .Article-head {
+            margin-bottom: 20px;
+        }
+
+        .Article-headline {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin: 0 0 20px;
+        }
+
+        .Article-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .ArticleAuthor {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .ArticleAuthor-headshot {
+            margin-right: 10px;
+        }
+
+        .HeadshotContainer {
+            display: flex;
+            align-items: center;
+        }
+
+        .Headshot {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 40px;
+            height: 40px;
+        }
+
+        .Headshot-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .ArticleAuthor-info {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .ArticleAuthor-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .ArticleAuthor-name--link {
+            text-decoration: none;
+            color: #0073e6;
+        }
+
+        .ArticleAuthor-time {
+            color: #999;
+        }
+
+        .TimeStamp {
+            font-style: italic;
+        }
+
+        .ArticleAuthor-separator {
+            margin: 0 5px;
+        }
+
+        .ArticleAuthor-readTime {
+            color: #666;
+        }
+
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .site-footer-row {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .SocialIconsBar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .SocialIconsBar li {
+            margin: 0 5px;
+        }
+
+        .SocialButton {
+            display: block;
+            width: 60px;
+            height: 60px;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            cursor: pointer;
+                        background-color: #3399;
+            text-indent: -9999px;
+            transition: background-color 0.3s;
+        }
+
+        .SocialButton:hover {
+            background-color: #0073e6;
+        }
+
+        .SocialButton--icon-moon-facebook {
+            background-image: url('https://dl.dropboxusercontent.com/scl/fi/vays4x0lkavsmn76ecq4z/Facebook.png?rlkey=4nvgl6fehe3clijpa322v3vl5&st=yz1gywr2&dl=0');
+        }
+
+        .SocialButton--icon-moon-x {
+            background-image: url('https://dl.dropboxusercontent.com/scl/fi/5rf0nd5zo8z3wjhyjg10d/twitter.png?rlkey=47b65exk4kxiimoh11sq0uq8c&st=xlf9xanq&dl=0');
+        }
+
+        .SocialButton--icon-moon-instagram {
+            background-image: url('https://dl.dropboxusercontent.com/scl/fi/bq6nrf350zmaped99vfef/Instagram.png?rlkey=507ib8yjph3g9o6nb30sq65z4&st=rwstwzmq&dl=0');
+        }
+
+        .SocialButton--icon-moon-gmail {
+            background-image: url('https://via.placeholder.com/24x24?text=G');
+        }
+
+        .SocialButton--icon-moon-telegram {
+            background-image: url('https://via.placeholder.com/24x24?text=T');
+        }
+
+        .related-news {
+            margin-top: 20px;
+        }
+
+        .related-news-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .related-news-item img {
+            width: 100px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .news-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .news-author {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+        <header class="header">
+        <a href="#" class="logo">FOXNEWS</a>
+        <div class="actions">
+            <a href="#" class="watch-movie-button">WatchTv</a>
+            <span class="toggle-menu" onclick="toggleNavbar()">&#9776;</span>
+        </div>
+    </header>
+        <nav class="navbar" id="navbar">
+        <a href="#home"><i class="fas fa-home" style="color:#111;"></i> Home</a>
+        <hr>
+        <a href="#about">   <i class="fas fa-arrow-circle-down" style="color:#111;"></i> About</a>
+        <hr>
+        <a href="#services">   <i class="fas fa-cog" style="color:#111;"></i> Services</a>
+        <hr>
+        <a href="#contact">   <i class="fas fa-envelope" style="color:#111;"></i> Contact</a>
+    </nav>
+    
+    <div class="container">
+        <div class="article" id="article">
+            <!-- Article content will be injected here by JavaScript -->
+        </div>
+    </div>
+      <script src="headher.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script>
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVvPjdsj84mWqaG4-7SyjbljCnslZ1SM",
+  authDomain: "hendaa-1.firebaseapp.com",
+  databaseURL: "https://hendaa-1-default-rtdb.firebaseio.com",
+  projectId: "hendaa-1",
+  storageBucket: "hendaa-1.appspot.com",
+  messagingSenderId: "831134776479",
+  appId: "1:831134776479:web:56cd7098fc69cd70a376aa"
+};
+        firebase.initializeApp(firebaseConfig);
+
+        // Fetch article details from Firestore
+        const db = firebase.firestore();
+        const articleId = new URLSearchParams(window.location.search).get('id');
+        const articleContainer = document.getElementById('article');
+
+        db.collection("articles").doc(articleId).get().then((doc) => {
+            if (doc.exists) {
+                const article = doc.data();
+                const formattedDate = new Date(article.timestamp.seconds * 1000).toLocaleDateString();
+                const tags = article.tags.join(', ');
+
+let imagesHTML = '';
+                if (article.imageUrls && article.imageUrls.length > 0) {
+                    article.imageUrls.forEach(url => {
+                        imagesHTML += `<img src="${url}" alt="Article Image">`;
+                    });
+                }
+
+                articleContainer.innerHTML = `
+                    ${imagesHTML}
+                                              
+        <div class="Article-head">
+                        <img class="Article-image" src="${article.imageUrl}" alt="NFL Roster Cuts">
+        </div>
+                    <h1 class="Article-headline">${article.title}</h1>
+
+                    <div class="ArticleAuthor" itemscope="" itemtype="http://schema.org/Person" itemprop="author" section="author">
+            <div class="ArticleAuthor-headshot">
+                <a href="/writers/cody-benjamin/" rel="author">
+                    <div class="HeadshotContainer">
+                        <div class="Headshot Headshot--medium">
+                            <figure class="Headshot-image img">
+                                <img class="is-lazy-image" alt="Cody Benjamin" src="                                                        <img src="">
+                            </figure>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="ArticleAuthor-info">
+                <div class="ArticleAuthor-name ArticleAuthor-name--last">
+                    By
+                    <span class="ArticleAuthor-nameText" itemprop="name">
+                        <a href="/writers/cody-benjamin/" class="ArticleAuthor-name--link" rel="author">${article.author} </a>
+                    </span>
+                </div>
+                <div class="ArticleAuthor-time">
+                    <time class="TimeStamp" datetime="2024-08-27 17:56:05 UTC" data-component="dateTimeAgo" data-date-time-ago-options="{&quot;day&quot;:&quot;27&quot;,&quot;hour&quot;:&quot;17&quot;,&quot;min&quot;:&quot;56&quot;,&quot;month&quot;:&quot;8&quot;,&quot;year&quot;:&quot;2024&quot;,&quot;hideAfter24Hours&quot;:false}">${article.category}</time>
+                    <span class="ArticleAuthor-separator">•</span>
+                    <span class="ArticleAuthor-readTime">${formattedDate} </span>
+                </div>
+            </div>
+        </div>
+                <div class="content">
+            <p>${article.content}</p>
+ 
+                    ${article.link ? `<p><a href="${article.link}" target="_blank">Read more</a></p>` : ''}
+                    <p class="meta">Tags: ${tags}</p>
+                    <div class="share-buttons">
+                        <button onclick="shareArticle('${article.title}', '${article.summary}', '${currentURL}')">Share</button>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">Share on Facebook</a>
+                        <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=${article.title}" target="_blank">Share on Twitter</a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${currentURL}" target="_blank">Share on LinkedIn</a>
+                    </div>
+                `;
+            } else {
+                articleContainer.innerHTML = "<p>Article not found.</p>";
+            }
+        }).catch((error) => {
+            console.error("Error fetching article:", error);
+            articleContainer.innerHTML = "<p>Failed to load article details.</p>";
+        });
+
+        // Share article using Web Share API
+        function shareArticle(title, text, url) {
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: text,
+                    url: url,
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(console.error);
+            } else {
+                alert('Web Share API not supported in this browser. Please use the social media buttons to share.');
+            }
+        }
+    </script>
+    <script>
+        function toggleNavbar() {
+            var navbar = document.getElementById("navbar");
+            if (navbar.style.display === "flex") {
+                navbar.style.display = "none";
+            } else {
+                navbar.style.display = "flex";
+            }
+        }
+    </script>
+</body>
+</html>
