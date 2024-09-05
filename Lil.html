@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        .header .logo:hover {
+            text-decoration: underline;
+        }
+        .header .actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header .watch-movie-button {
+            padding: 5px 10px;
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .header .watch-movie-button:hover {
+            background-color: #CC0000;
+        }
+        .header .toggle-menu {
+            font-size: 24px;
+            cursor: pointer;
+        }
+                .topic-nav {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e7e7e7;
+            padding: 10px 0;
+        }
+
+        .topic-nav-items {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            
+        }
+
+        .topic-nav-item {
+            display: inline;
+            border-radius: 25px;
+        }
+
+        .nav-item-label {
+            text-decoration: none;
+            padding: 5px 8px;
+            display: block;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .color-dark-blue {
+            background-color: #003366;
+        }
+
+        .color-blue {
+            background-color: #148;
+        }
+
+        .color-purple {
+            background-color: #800080;
+        }
+
+        .color-green {
+            background-color: #008000;
+        }
+
+        .color-teal {
+            background-color: #008080;
+        }
+
+        .nav-item-label:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .active .nav-item-label {
+            background-color: #0000FF; /* Highlight the active link */
+        }
+              .navbar {
+            display: none;
+            flex-direction: column;
+            background-color: #F4F4F4;
+            padding: 10px 20px;
+            
+        }
+        .navbar a {
+            color: #111;
+            
+            padding: 10px 0;
+            text-decoration: none;
+            font-size: 18px;
+          
+        }
+        .navbar icon {
+          color: #111;
+        }
+        .navbar a:hover {
+            background-color: #111;
+            color: #fff;
+        }
+        @media(min-width: 768px) {
+            .navbar {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .navbar a {
+                padding: 10px 20px;
+            }
+        }
+        section.article {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+section.article h2 {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+section.article p {
+  color: #333;
+  margin-left: 15px;
+}
+section.article a {
+    
+    text-decoration: none;
+}
+section.article time {
+color: #ffff;
+background: #148;
+padding: 10px;
+border-bottom-right-radius: 5px;
+}
+
+section.article img {
+    width: 100%;
+    height: 250px;
+
+    
+}
+
+        .news-container {
+            padding: 20px;
+        }
+
+        .news-item {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .news-item img {
+            width: 180px;
+            height: 80px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .news-details {
+            flex-grow: 1;
+        }
+
+        .news-details h2 {
+            margin: 0 0 5px 0;
+            font-size: 12px;
+        }
+
+        .news-details p {
+            margin: 0;
+            color: #888;
+            font-size:10px
+        }
+
+        .news-details span {
+            font-size: 10px;
+            color: #888;
+        }
+
+  .footer {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #1E90FF;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer-logo img {
+            width: 150px;
+        }
+
+        .footer-social {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer-social a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .footer-social a:hover {
+            color: #1E90FF;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #1E90FF;
+        }
+
+h2 a {
+  color: #148;
+}
+    </style>
+</head>
+<body>
+
+
+    <header class="header">
+        <a href="#" class="logo">FOXNEWS</a>
+        <div class="actions">
+            <a href="#" class="watch-movie-button">WatchTv</a>
+            <span class="toggle-menu" onclick="toggleNavbar()">&#9776;</span>
+        </div>
+    </header>
+
+<nav class="topic-nav">
+    <ul class="topic-nav-items">
+        <li class="topic-nav-item color-dark-blue">
+            <a class="nav-item-label" href="https://www.foxnews.com/" data-omtr-intcmp="fnhp_fixednav_home">Home</a>
+        </li>
+        <li class="topic-nav-item color-blue">
+            <a class="nav-item-label" href="https://www.foxnews.com/sports" data-omtr-intcmp="fnhp_fixednav_sports">Sports</a>
+        </li>
+        <li class="topic-nav-item color-purple">
+            <a class="nav-item-label" href="https://www.foxnews.com/entertainment" data-omtr-intcmp="fnhp_fixednav_entertainment">Entertainment</a>
+        </li>
+        <li class="topic-nav-item color-green">
+            <a class="nav-item-label" href="https://www.foxnews.com/lifestyle" data-omtr-intcmp="fnhp_fixednav_lifestyle">Lifestyle</a>
+        </li>
+
+    
+    </ul>
+</nav>
+        <nav class="navbar" id="navbar">
+        <a href="#home"><i class="fas fa-home" style="color:#111;"></i> Home</a>
+        <hr>
+        <a href="#about">   <i class="fas fa-arrow-circle-down" style="color:#111;"></i> About</a>
+        <hr>
+        <a href="#services">   <i class="fas fa-cog" style="color:#111;"></i> Services</a>
+        <hr>
+        <a href="#contact">   <i class="fas fa-envelope" style="color:#111;"></i> Contact</a>
+    </nav>
+    
+    
+    <div id="articles"></div>
+    
+        <div class="news-container">
+        <div class="news-item">
+            <img src="https://via.placeholder.com/120x80" alt="News Image">
+            <div class="news-details">
+                <p><span>POLITICS</span> 28 mins ago</p>
+                <h2>Trump opposes Florida's Amendment 4, which offers unfettered abortion access: 'It's radical'</h2>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://via.placeholder.com/120x80" alt="News Image">
+            <div class="news-details">
+                <p><span>US</span> 1 hour ago</p>
+                <h2>After video of armed Venezuelan gang shared by local official goes viral, Colorado city takes action</h2>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://via.placeholder.com/120x80" alt="News Image">
+            <div class="news-details">
+                <p><span>US</span> 5 hours ago</p>
+                <h2>Former Colorado apartment resident says Gov. Polis 'wouldn't last five minutes' against armed gangs</h2>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://via.placeholder.com/120x80" alt="News Image">
+            <div class="news-details">
+                <p><span>US</span> 1 day ago</p>
+                <h2>Colorado city council member fires back after governor's office dismisses armed gang takeover as 'imagination'</h2>
+            </div>
+        </div>
+        <div class="news-item">
+            <img src="https://via.placeholder.com/120x80" alt="News Image">
+            <div class="news-details">
+                <p><span>US</span> 1 day ago</p>
+                <h2>Colorado mayor speaks out after video of armed Venezuelan gang in apartment goes viral: 'Failed policy'</h2>
+            </div>
+        </div>
+    </div>
+    
+    
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>More</h3>
+            <ul>
+                <li><a href="#">Advertise with Us</a></li>
+                <li><a href="#">Press Room</a></li>
+                <li><a href="#">Media Kit</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-logo">
+        <img src="boonc.jpg" alt="Logo">
+    </div>
+
+    <div class="footer-social">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2024 Your News App. All rights reserved. | <a href="#">Site Map</a> | <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+    </div>
+</footer>
+<script>
+        function toggleNavbar() {
+            var navbar = document.getElementById("navbar");
+            if (navbar.style.display === "flex") {
+                navbar.style.display = "none";
+            } else {
+                navbar.style.display = "flex";
+            }
+        }
+    </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script>
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtVvPjdsj84mWqaG4-7SyjbljCnslZ1SM",
+  authDomain: "hendaa-1.firebaseapp.com",
+  databaseURL: "https://hendaa-1-default-rtdb.firebaseio.com",
+  projectId: "hendaa-1",
+  storageBucket: "hendaa-1.appspot.com",
+  messagingSenderId: "831134776479",
+  appId: "1:831134776479:web:56cd7098fc69cd70a376aa"
+};
+        firebase.initializeApp(firebaseConfig);
+
+        // Fetch articles from Firestore
+        const db = firebase.firestore();
+        const articlesContainer = document.getElementById('articles');
+
+        db.collection("blogPosts").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const article = doc.data();
+                const articleId = doc.id;
+
+                const articleElement = document.createElement('div');
+                articleElement.classList.add('article');
+                articleElement.innerHTML = `
+        <section class="article">
+                  <img src="${article.imageUrl}" width="600" height="400"
+                    alt="${article.title}">
+
+<time>
+${new Date(article.timestamp.toDate()).toDateString()}</time>
+                          
+                    <h2><a href="articled.html?id=${articleId}">${article.title}</a></h2>
+
+
+
+                `;
+                articlesContainer.appendChild(articleElement);
+            });
+        }).catch((error) => {
+            console.error("Error fetching articles: ", error);
+        });
+    </script>
+</body>
+</html>
